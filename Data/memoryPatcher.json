@@ -1,0 +1,8 @@
+{
+  "Author": "meli",
+  "Name": "Memory Patcher Plugin",
+  "Description": "Allows simple application of memory patches at runtime.",
+  "InternalName": "memoryPatcher",
+  "AssemblyVersion": "1.0.0.0",
+  "ApplicableVersion": "any"
+}
