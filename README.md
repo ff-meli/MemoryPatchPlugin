@@ -5,7 +5,7 @@ Patches can be enabled and disabled freely at runtime through the plugin ui.  Th
 
 Patches can be flagged to load immediately on plugin startup if desired.
 
-## Sample patch
+### Sample patch
 ```
 {
   "name": "A Globally Unique Name",
@@ -43,6 +43,19 @@ Patches can be flagged to load immediately on plugin startup if desired.
     // the byte pattern to apply as the actual code patch
     // be sure to pad instructions with nops or similar as necessary (as with the 0x90 bytes here)
     "bytes": "31 C0 90 90 90"
+  }
+}
+```
+
+### Sample minimal patch with no validation
+```
+{
+  "name": "A different globally unique name",
+  "location": {
+    "offset": "908B9"
+  },
+  "patch": {
+    "bytes": "31 C0 90 90 90 90"
   }
 }
 ```
