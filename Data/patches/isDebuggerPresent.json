@@ -2,11 +2,11 @@
   "name": "IsDebuggerPresent",
   "description": "Disables the IsDebuggerPresent check that can trigger a 6d exit.",
   "location": {
-    "offset": "908B9"
+    "signature": "89 83 ?? ?? ?? ?? 75 ?? FF 15 ?? ?? ?? ?? 85 C0 74 ??",
+    "offset": "8"
   },
   "validation": {
-    "exeVersion": "2020.03.27.0000.0000",
-    "requiredBytes": "FF 15 ?? ?? ?? ?? 85 C0 74 11"
+    "requiredBytes": "FF 15 ?? ?? ?? ?? 85 C0 74 ??"
   },
   "patch": {
     "location": "overwrite",

@@ -3,6 +3,9 @@
   "Name": "Memory Patcher Plugin",
   "Description": "Allows simple application of memory patches at runtime.",
   "InternalName": "memoryPatcher",
-  "AssemblyVersion": "1.0.0.0",
-  "ApplicableVersion": "any"
+  "AssemblyVersion": "1.1.0.0",
+  "RepoUrl": "https://github.com/ff-meli/MemoryPatchPlugin",
+  "ApplicableVersion": "any",
+  "Tags": ["dev", "utility"],
+  "DalamudApiLevel": 1
 }

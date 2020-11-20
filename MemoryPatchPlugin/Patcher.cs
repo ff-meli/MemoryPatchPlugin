@@ -68,7 +68,9 @@ namespace MemoryPatchPlugin
             PluginLog.Log($"Loading patch {patchDef.Name}");
 
             var address = ResolveAddress(patchDef);
+            PluginLog.Log("address found");
             ValidatePatch(patchDef, address);
+            PluginLog.Log("validate");
 
             return new Patch()
             {
@@ -87,18 +89,24 @@ namespace MemoryPatchPlugin
             {
                 // TODO: do we need to handle .data too?
                 address = scanner.ScanText(patchDef.Location.Signature);
-
+                PluginLog.Log("got address {0} at offset {1}", address, address.ToInt64() - scanner.Module.BaseAddress.ToInt64());
                 // ensure that there is only one instance found
                 try
                 {
                     var offset = (int)(address.ToInt64() - scanner.TextSectionBase.ToInt64());
                     var dupeAddr = scanner.Scan(address + 1, scanner.TextSectionSize - offset, patchDef.Location.Signature);
+                    PluginLog.Log("dupe addr found");
                     // if we get here, there is a duplicate
                     throw new ArgumentException("Signatures specified in Location.Signature must resolve to a unique address");
                 }
                 catch (KeyNotFoundException)
                 {
                     // Scan() throws this if not found, so getting here means we are ok
+                    PluginLog.Log("all good");
+                }
+                catch(Exception e)
+                {
+                    PluginLog.Log("derp");
                 }
             }
 

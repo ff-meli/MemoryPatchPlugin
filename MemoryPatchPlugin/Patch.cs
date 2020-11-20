@@ -19,6 +19,7 @@ namespace MemoryPatchPlugin
 
         public void Enable()
         {
+            PluginLog.Log("attempting enable");
             if (!IsActive)
             {
                 OriginalBytes = Memory.Read(Address, Bytes.Length);

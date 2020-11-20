@@ -39,15 +39,22 @@ namespace MemoryPatchPlugin
                 InstallDefaultPatches(patchPath);
             }
 
-            this.patcher = new Patcher(patchPath, pluginInterface.TargetModuleScanner);
+            try
+            {
+                this.patcher = new Patcher(patchPath, pluginInterface.TargetModuleScanner);
 
-            EnableAutoLoadPatches();
+                EnableAutoLoadPatches();
 
-            // let's just pass the entire world in here... :(
-            this.ui = new PatcherUI(this.patcher, this.configuration, this.pi, this);
+                // let's just pass the entire world in here... :(
+                this.ui = new PatcherUI(this.patcher, this.configuration, this.pi, this);
 
-            this.pi.UiBuilder.OnBuildUi += Display;
-            this.pi.UiBuilder.OnOpenConfigUi += (sender, args) => OnDisplayCommand(command, "");
+                this.pi.UiBuilder.OnBuildUi += Display;
+                this.pi.UiBuilder.OnOpenConfigUi += (sender, args) => OnDisplayCommand(command, "");
+            }
+            catch (Exception e)
+            {
+                PluginLog.LogError(e, "patcher load failed");
+            }
         }
 
         public void Dispose()

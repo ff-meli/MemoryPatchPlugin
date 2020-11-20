@@ -93,6 +93,23 @@ namespace MemoryPatchPlugin
                             this.pluginInterface.SavePluginConfig(this.configuration);
                         }
 
+                        var disableOnUnload = configData?.DisableOnUnload ?? true;
+                        if (ImGui.Checkbox("Disable on unload##" + patch.Definition.Name, ref disableOnUnload))
+                        {
+                            // FIXME
+                            if (configData == null)
+                            {
+                                configData = new PatchMetaData()
+                                {
+                                    Name = patch.Definition.Name,
+                                };
+                                this.configuration.Patches.Add(configData);
+                            }
+
+                            configData.DisableOnUnload = disableOnUnload;
+                            this.pluginInterface.SavePluginConfig(this.configuration);
+                        }
+
                         ImGui.Unindent();
                     }
                 }

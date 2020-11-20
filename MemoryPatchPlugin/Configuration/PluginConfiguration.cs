@@ -7,7 +7,7 @@ namespace MemoryPatchPlugin.Configuration
     [Serializable]
     class PluginConfiguration : IPluginConfiguration
     {
-        public int Version { get; set; } = 0;
+        public int Version { get; set; } = 1;
 
         public List<PatchMetaData> Patches { get; set; } = new List<PatchMetaData>();
     }
